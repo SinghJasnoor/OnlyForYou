@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Letter to My BFF</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+    }
+    
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    #letter {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      line-height: 1.6;
+    }
+
+    #big-text {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="letter">
+      <div id="big-text"></div>
+    </div>
+  </div>
+
+  <script>
+    var initialText = "To My Dearest Friend";
+    var bigTextElement = document.getElementById("big-text");
+    var letterContent = `💖 Words cannot express the gratitude I have for your unwavering friendship. You are the constant rock in my life, the one who understands me without judgment and supports me through thick and thin. Our bond is unbreakable, forged by countless shared moments and laughter that will forever be etched in my heart. 💖
+
+    You are the one who knows my secrets, my dreams, and my fears. You've seen me at my best and my worst, yet you've never wavered in your loyalty and love. With you, I can be my authentic self, knowing that you will accept me completely.
+
+    Through the ups and downs, the highs and lows, you've been my anchor, offering a listening ear, a comforting embrace, and wise advice. Your presence alone is a source of strength, empowering me to face any challenge that comes my way.
+
+    We've created memories that will last a lifetime - the inside jokes, the adventures, and the countless late-night conversations. Each moment spent with you is a treasure, filling my life with joy and warmth.
+
+    In a world full of uncertainties, I am grateful to have you by my side, a constant source of support and love. Our friendship is a precious gift, one that I will always cherish and protect.
+
+    Thank you for being my confidante, my cheerleader, and my partner in crime. I am beyond blessed to have you in my life.
+
+    ❤️ Forever and always ❤️`;
+
+    var letter = document.getElementById("letter");
+    var index = 0;
+
+    function typeLetter() {
+      if (index < initialText.length) {
+        bigTextElement.innerHTML += initialText.charAt(index);
+        index++;
+      } else {
+        letter.innerHTML = letterContent.slice(0, index - initialText.length);
+        index++;
+      }
+
+      if (index > initialText.length + letterContent.length) {
+        clearInterval(typingInterval);
+        setTimeout(function() {
+          letter.innerHTML = letterContent;
+        }, 5000); // Delay for 5 seconds (5000 milliseconds)
+      }
+    }
+
+    var typingInterval = setInterval(typeLetter, 110);
+  </script>
+</body>
+</html>
